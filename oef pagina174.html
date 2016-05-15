@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+
+		<title>Oef p174</title>
+
+
+		<!-- Replace favicon.ico & apple-touch-icon.png in the root of your domain and delete these references -->
+		<link rel="shortcut icon" href="/favicon.ico">
+		<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+		<script type="text/javascript"
+		src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.1.js"></script>
+		<script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/jquery.ui/1.8.9/jquery-ui.min.js"></script>
+		<script type="text/javascript">
+			$(document).ready(function() {
+
+				// temp < 0 = blauw && temp > 0 = groen.
+				for ( i = 1; i <= 7; i++) {
+					if (($("tbody").children("tr:nth-child(" + i + ")").children("td:nth-child(2)").html()) > 0) {
+						$("tbody").children("tr:nth-child(" + i + ")").css("background-color", "green");
+					} else {
+						$("tbody").children("tr:nth-child(" + i + ")").css("background-color", "blue");
+					}
+				}
+
+				$.fn.verwijderen = function() {
+					for ( i = 1; i <= 7; i++) {
+						if (($("tbody").children("tr:nth-child(" + i + ")").children("td:nth-child(2)").html()) < 0) {
+							$("tbody").children("tr:nth-child(" + i + ")").css("display", "none");
+						}
+					}
+				};
+
+				$("#verwijder").click(function() {
+					$("#filter").verwijderen();
+				});
+				$("#filter").slider({
+					change: function(event, ui){
+					}
+				});
+			});
+		</script>
+	</head>
+
+	<body>
+		<table  id="filter">
+			<tbody>
+				<tr>
+					<td>A</td><td>30</td>
+				</tr>
+				<tr>
+					<td>B</td><td>-4</td>
+				</tr>
+				<tr>
+					<td>C</td><td>50</td>
+				</tr>
+				<tr>
+					<td>D</td><td>-10</td>
+				</tr>
+				<tr>
+					<td>E</td><td>-20</td>
+				</tr>
+				<tr>
+					<td>F</td><td>20</td>
+				</tr>
+				<tr>
+					<td>H</td><td>40</td>
+				</tr>
+			</tbody>
+		</table>
+
+		<input id="verwijder" type="button" value="Verwijder negative">
+	</body>
+</html>
