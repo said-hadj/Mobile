@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <title>oef pagina233</title>
+  
+	
+		<script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+		<script type="text/javascript" src="http://code.jquery.com/mobile/1.0.1/jquery.mobile-1.0.1.min.js"></script>
+
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <script >
+			$(document).ready(function() {					
+					var URL = "https://api.twitter.com/1/statuses/user_timeline.json?screen_name=buienradarnl&callback=twitter";
+					$.ajax({
+							dataType : 'json',
+							type : 'GET',
+							url : URL + '&jsoncallback=?',
+							success : verwerkJSON
+					});
+					
+				});
+			
+
+			function verwerkJSON(response) {
+				
+				for (var i = 0; i < response.items.length; i++) {
+					var twitobj = response.items[i];
+					var html =  twitobj ;
+					$("#status").append(html);
+				}
+				$('#statius').listview("refresh");
+
+			}
+		</script>
+</head>
+
+<body>
+  <div data-role="page">
+    <div data-role="header">
+    	<h1>
+    		Twitter Status Updates</h1>
+    	
+    </div>
+    <div data-role="content">
+    	<ul id="status"></ul>
+    </div>
+    <div data-role="footer">
+    	<h4>
+    		Laatst bijgewerkt op <span id="updateTijd">&nbsp;</span></h4>
+    </div>
+  </div>
+</body>
+</html>
