@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+
+		<title>HTML</title>
+		
+
+		<!-- Replace favicon.ico & apple-touch-icon.png in the root of your domain and delete these references -->
+		<link rel="shortcut icon" href="/favicon.ico">
+		<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+		<style type="text/css">
+			.titel {
+				text-align: center;
+				line-height: 200px;
+				font-size: 1px;
+				color: #00b;
+			}
+		</style>
+
+		<script src="../js/jquery-1.11.2.min.js"></script>
+		<script type="text/javascript">
+			$(document).ready(function() {
+				$("#inhoud").addClass("titel");
+				$("#inhoud").html("Starten met jQuery!");
+				$("#inhoud").animate({
+					fontSize : "90px"
+				}, 2500);
+			});
+		</script>
+
+	</head>
+
+	<body>
+		<div id="inhoud"></div>
+
+	</body>
+</html>
